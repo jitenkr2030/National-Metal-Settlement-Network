@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Merchants - NMSN | Accept Metal Payments & Grow Your Business</title>
+    <meta name="description" content="Join thousands of merchants accepting gold, silver, and platinum payments. NMSN offers instant INR settlement, competitive fees, and comprehensive support.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .benefits-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .benefit-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .benefit-metrics {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .industries-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .industry-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 25px;
+        }
+
+        .industry-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .industry-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .industry-use-cases {
+            list-style: none;
+            text-align: left;
+        }
+
+        .industry-use-cases li {
+            padding: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .industry-use-cases i {
+            color: #4CAF50;
+            font-size: 0.9rem;
+        }
+
+        .process-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .step-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .step-timeline {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .benefits-grid, .industries-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">🇮🇳 NMSN</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="merchants.html">For Merchants</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Accept Metal Payments & Grow Your Business</h1>
+            <p>Join thousands of merchants across India who are already earning more with NMSN's instant metal-to-INR settlement system.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#onboard" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Start Accepting Today
+                </a>
+                <a href="dashboard.html" class="btn btn-secondary">
+                    <i class="fas fa-chart-line"></i>
+                    View Dashboard
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Merchants Choose NMSN</h2>
+            <p class="section-subtitle">Instant settlement, competitive rates, and comprehensive support for your business growth.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="benefit-title">Instant INR Settlement</h3>
+                    <p class="benefit-description">Receive payments in INR within 2 seconds of customer transaction. No waiting periods, no delays - get your money instantly.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">< 2s</div>
+                            <div class="metric-label">Settlement Time</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">0.3%</div>
+                            <div class="metric-label">Network Fee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Access New Customers</h3>
+                    <p class="benefit-description">Attract customers who prefer paying with precious metals. Tap into the growing crypto and metal investment community.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">50K+</div>
+                            <div class="metric-label">Active Users</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">15%</div>
+                            <div class="metric-label">Avg. Revenue Lift</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Higher Transaction Values</h3>
+                    <p class="benefit-description">Metal payments typically result in 25-40% higher average order values. Customers spend more when paying with appreciating assets.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">35%</div>
+                            <div class="metric-label">Higher AOV</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">12%</div>
+                            <div class="metric-label">Repeat Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Regulatory Compliance</h3>
+                    <p class="benefit-description">Full RBI, SEBI, and FIU compliance built-in. Automatic tax reporting and GST invoice generation for seamless operations.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Compliant</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">0</div>
+                            <div class="metric-label">Compliance Issues</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="benefit-title">24/7 Support</h3>
+                    <p class="benefit-description">Dedicated merchant support team available round the clock. Technical assistance, business consulting, and growth strategies.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">24/7</div>
+                            <div class="metric-label">Support</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">< 5min</div>
+                            <div class="metric-label">Response Time</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Easy Integration</h3>
+                    <p class="benefit-description">Simple API integration with popular e-commerce platforms. Ready-made plugins for Shopify, WooCommerce, and more.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric">
+                            <div class="metric-value">< 1hr</div>
+                            <div class="metric-label">Setup Time</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">10+</div>
+                            <div class="metric-label">Platforms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries-section">
+        <div class="container">
+            <h2 class="section-title">Perfect for Every Industry</h2>
+            <p class="section-subtitle">NMSN works across diverse business verticals with industry-specific features and integrations.</p>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="industry-name">Jewelry Stores</h3>
+                    <p class="industry-description">Natural fit for jewelry retailers. Accept gold payments, offer buyback options, and manage precious metal inventory.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> Gold payment acceptance</li>
+                        <li><i class="fas fa-check"></i> Inventory management</li>
+                        <li><i class="fas fa-check"></i> Buyback services</li>
+                        <li><i class="fas fa-check"></i> Customer portfolios</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="industry-name">E-commerce</h3>
+                    <p class="industry-description">Online stores can offer metal payment options to attract affluent customers and increase average order values.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> Plugin integrations</li>
+                        <li><i class="fas fa-check"></i> Cart abandonment recovery</li>
+                        <li><i class="fas fa-check"></i> Loyalty programs</li>
+                        <li><i class="fas fa-check"></i> Cross-selling opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="industry-name">Restaurants & Hotels</h3>
+                    <p class="industry-description">Premium dining establishments can offer unique payment experiences and attract high-net-worth customers.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> Premium payment experience</li>
+                        <li><i class="fas fa-check"></i> VIP customer rewards</li>
+                        <li><i class="fas fa-check"></i> Special occasion packages</li>
+                        <li><i class="fas fa-check"></i> Loyalty tiers</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="industry-name">NBFCs & Banks</h3>
+                    <p class="industry-description">Financial institutions can offer metal-backed loans, collateral management, and innovative financial products.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> Collateral management</li>
+                        <li><i class="fas fa-check"></i> Metal-backed loans</li>
+                        <li><i class="fas fa-check"></i> Portfolio services</li>
+                        <li><i class="fas fa-check"></i> Compliance reporting</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="industry-name">Luxury Goods</h3>
+                    <p class="industry-description">High-end retailers, automobile dealers, and luxury service providers can offer exclusive payment options.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> High-value transactions</li>
+                        <li><i class="fas fa-check"></i> Asset-backed payments</li>
+                        <li><i class="fas fa-check"></i> Investment-grade purchases</li>
+                        <li><i class="fas fa-check"></i> Exclusive customer tiers</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="industry-name">Services</h3>
+                    <p class="industry-description">Professional services, consulting firms, and service providers can offer flexible payment options.</p>
+                    <ul class="industry-use-cases">
+                        <li><i class="fas fa-check"></i> Professional services</li>
+                        <li><i class="fas fa-check"></i> Consulting fees</li>
+                        <li><i class="fas fa-check"></i> Subscription models</li>
+                        <li><i class="fas fa-check"></i> Retainer payments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Simple Onboarding Process</h2>
+            <p class="section-subtitle">Get started with NMSN in just 4 easy steps. Our team guides you through the entire process.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Register & KYC</h3>
+                    <p class="step-description">Complete merchant registration and KYC verification. Our team reviews your application within 24 hours.</p>
+                    <div class="step-timeline">24 hours</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">API Integration</h3>
+                    <p class="step-description">Receive API keys and integrate our payment gateway into your system. We provide code samples and support.</p>
+                    <div class="step-timeline">2-4 hours</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Testing & Go Live</h3>
+                    <p class="step-description">Test transactions in our sandbox environment. Once approved, go live and start accepting metal payments.</p>
+                    <div class="step-timeline">2-3 hours</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Start Earning</h3>
+                    <p class="step-description">Begin accepting metal payments and receive instant INR settlements. Access your merchant dashboard for analytics.</p>
+                    <div class="step-timeline">Immediate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Merchants Say</h2>
+            <p class="section-subtitle">Real feedback from businesses already growing with NMSN.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Since implementing NMSN, our average order value has increased by 40%. Customers love the convenience of paying with gold, and the instant settlement means we get our money immediately."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Goldsmith, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"NMSN transformed our business. We attract customers who wouldn't normally shop with us, and the metal payment option has become our unique selling proposition. Sales are up 25%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Jewelry Store Owner, Delhi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The integration was incredibly smooth, and the support team was excellent. Our customers appreciate the modern payment option, and we've seen increased loyalty and repeat purchases."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div class="author-info">
+                            <h4>Amit Kumar</h4>
+                            <p>E-commerce Store, Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Grow Your Business?</h2>
+            <p>Join thousands of successful merchants and start accepting metal payments today. No setup fees, competitive rates, and instant support.</p>
+            <a href="#onboard" class="btn btn-primary" id="onboard">
+                <i class="fas fa-rocket"></i>
+                Start Accepting Metal Payments
+            </a>
+            <div style="margin-top: 20px;">
+                <a href="contact.html" style="color: #1e3c72; text-decoration: none; font-weight: 500;">
+                    <i class="fas fa-phone"></i> Or speak with our sales team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMSN</h3>
+                    <p>National Metal Settlement Network - India's first nationwide precious metal payment system.</p>
+                    <p>Empowering merchants with instant metal-to-INR settlement.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Merchants</h3>
+                    <a href="#">Getting Started</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">Integration Guide</a>
+                    <a href="#">Merchant Dashboard</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Support</a>
+                    <a href="#">Technical Docs</a>
+                    <a href="#">Business Consulting</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#">Partnerships</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NMSN - National Metal Settlement Network. All rights reserved.</p>
+                <p>Built with ❤️ in India for merchant success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling and animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .industry-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Counter animation for metrics
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate metrics when they come into view
+        const metricsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const metrics = entry.target.querySelectorAll('.metric-value');
+                    metrics.forEach(metric => {
+                        const text = metric.textContent;
+                        if (text.includes('K+')) {
+                            const num = parseInt(text.replace('K+', ''));
+                            animateValue(metric, 0, num * 1000, 2000);
+                        } else if (text.includes('%')) {
+                            const num = parseInt(text.replace('%', ''));
+                            animateValue(metric, 0, num, 1500);
+                        }
+                    });
+                    metricsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.benefit-card').forEach(card => {
+            metricsObserver.observe(card);
+        });
+    </script>
+</body>
+</html>

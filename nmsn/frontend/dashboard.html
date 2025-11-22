@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMSN Merchant Dashboard - National Metal Settlement Network</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .metric-card.gold {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .metric-card.silver {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .metric-card.platinum {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .status-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-lg border-b-2 border-yellow-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-coins text-yellow-500 text-2xl mr-3"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">NMSN</h1>
+                        <p class="text-sm text-gray-600">National Metal Settlement Network</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="status-badge w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span class="text-sm text-gray-600">Network Online</span>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm font-medium text-gray-800">Merchant Dashboard</p>
+                        <p class="text-xs text-gray-500" id="currentTime"></p>
+                    </div>
+                    <img src="https://flagcdn.com/w40/in.png" alt="India" class="w-6 h-4 rounded">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Merchant Info Bar -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-yellow-400">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-store text-yellow-600 text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-2xl font-bold text-gray-800" id="merchantName">Loading...</h2>
+                        <p class="text-gray-600" id="merchantCategory">Category: Loading...</p>
+                        <p class="text-sm text-gray-500" id="merchantId">ID: Loading...</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">KYC Status</p>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium" id="kycStatus">
+                            <i class="fas fa-check-circle mr-1"></i>Verified
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">Settlement</p>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium" id="settlementPreference">
+                            Instant
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <!-- Total Volume -->
+            <div class="bg-white rounded-lg shadow-md p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-rupee-sign text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-white text-sm font-medium">Today's Volume</p>
+                        <p class="text-white text-2xl font-bold" id="todayVolume">₹0</p>
+                        <p class="text-white text-xs" id="volumeChange">+0% from yesterday</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions -->
+            <div class="bg-white rounded-lg shadow-md p-6 metric-card gold">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-white text-sm font-medium">Transactions Today</p>
+                        <p class="text-white text-2xl font-bold" id="transactionCount">0</p>
+                        <p class="text-white text-xs" id="avgTransaction">Avg: ₹0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metal Distribution -->
+            <div class="bg-white rounded-lg shadow-md p-6 metric-card silver">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-chart-pie text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-white text-sm font-medium">Gold Payments</p>
+                        <p class="text-white text-2xl font-bold" id="goldPercentage">0%</p>
+                        <p class="text-white text-xs" id="goldAmount">₹0 volume</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fees Earned -->
+            <div class="bg-white rounded-lg shadow-md p-6 metric-card platinum">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-percentage text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-white text-sm font-medium">Network Fees</p>
+                        <p class="text-white text-2xl font-bold" id="feesEarned">₹0</p>
+                        <p class="text-white text-xs">0.2% of transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Recent Transactions -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-800">
+                                <i class="fas fa-history mr-2 text-yellow-500"></i>
+                                Recent Transactions
+                            </h3>
+                            <button class="text-yellow-600 hover:text-yellow-700 text-sm font-medium">
+                                View All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="transactionsList" class="space-y-4">
+                            <!-- Transactions will be loaded here -->
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fas fa-spinner fa-spin text-2xl mb-4"></i>
+                                <p>Loading transactions...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settlement Status -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-money-check-alt mr-2 text-green-500"></i>
+                            Settlement Status
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium text-green-800">Completed Settlements</p>
+                                        <p class="text-sm text-green-600" id="completedSettlements">0 today</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-clock text-yellow-500 text-xl mr-3"></i>
+                                    <div>
+                                        <p class="font-medium text-yellow-800">Pending Settlements</p>
+                                        <p class="text-sm text-yellow-600" id="pendingSettlements">0 in queue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Settlement Progress</span>
+                                <span class="text-sm text-gray-500" id="settlementProgress">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" id="settlementBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metal Payment Analytics -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-chart-area mr-2 text-blue-500"></i>
+                            Metal Payment Analytics
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <canvas id="metalChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-6">
+                <!-- Alerts & Notifications -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-bell mr-2 text-red-500"></i>
+                            Alerts & Notifications
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div id="alertsList" class="space-y-3">
+                            <!-- Alerts will be loaded here -->
+                            <div class="text-center py-4 text-gray-500">
+                                <i class="fas fa-check-circle text-green-500 mb-2"></i>
+                                <p class="text-sm">All systems operational</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metal Price Widget -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-chart-line mr-2 text-yellow-500"></i>
+                            Live Metal Prices
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div id="metalPrices" class="space-y-4">
+                            <!-- Metal prices will be loaded here -->
+                            <div class="text-center py-4 text-gray-500">
+                                <i class="fas fa-spinner fa-spin mb-2"></i>
+                                <p class="text-sm">Loading prices...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-bolt mr-2 text-purple-500"></i>
+                            Quick Actions
+                        </h3>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                            <i class="fas fa-download mr-2"></i>
+                            Download Settlement Report
+                        </button>
+                        <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                            <i class="fas fa-cog mr-2"></i>
+                            Update Settlement Settings
+                        </button>
+                        <button class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                            <i class="fas fa-qrcode mr-2"></i>
+                            Generate Payment QR
+                        </button>
+                        <button class="w-full bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                            <i class="fas fa-file-invoice-dollar mr-2"></i>
+                            Export GST Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Network Status -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-network-wired mr-2 text-green-500"></i>
+                            Network Status
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">NMSN Core</span>
+                                <span class="text-green-500 text-sm">
+                                    <i class="fas fa-circle"></i> Healthy
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">BINR Bridge</span>
+                                <span class="text-green-500 text-sm">
+                                    <i class="fas fa-circle"></i> Connected
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Vault Connectors</span>
+                                <span class="text-green-500 text-sm">
+                                    <i class="fas fa-circle"></i> 3/3 Active
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Settlement Engine</span>
+                                <span class="text-green-500 text-sm">
+                                    <i class="fas fa-circle"></i> Operational
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Test Metal Payment</h3>
+                    <form id="paymentForm">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Amount (INR)</label>
+                            <input type="number" id="paymentAmount" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Enter amount" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Metal Type</label>
+                            <select id="paymentMetal" class="w-full border border-gray-300 rounded-lg px-3 py-2">
+                                <option value="gold">Gold</option>
+                                <option value="silver">Silver</option>
+                                <option value="platinum">Platinum</option>
+                                <option value="basket">Metal Basket</option>
+                            </select>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button type="button" onclick="closePaymentModal()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded-lg">
+                                Cancel
+                            </button>
+                            <button type="submit" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg">
+                                Create Payment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dashboard JavaScript
+        class MerchantDashboard {
+            constructor() {
+                this.merchantId = this.getMerchantIdFromURL() || 'merchant_001';
+                this.apiBaseUrl = 'http://localhost:3001/api';
+                this.init();
+            }
+
+            init() {
+                this.updateTime();
+                setInterval(() => this.updateTime(), 1000);
+                this.loadDashboardData();
+                this.setupEventListeners();
+                this.startRealTimeUpdates();
+            }
+
+            getMerchantIdFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('merchant') || 'merchant_001';
+            }
+
+            updateTime() {
+                const now = new Date();
+                document.getElementById('currentTime').textContent = 
+                    now.toLocaleString('en-IN', { 
+                        timeZone: 'Asia/Kolkata',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    });
+            }
+
+            async loadDashboardData() {
+                try {
+                    // Load merchant info
+                    await this.loadMerchantInfo();
+                    
+                    // Load dashboard metrics
+                    await this.loadDashboardMetrics();
+                    
+                    // Load recent transactions
+                    await this.loadRecentTransactions();
+                    
+                    // Load settlement status
+                    await this.loadSettlementStatus();
+                    
+                    // Load metal prices
+                    await this.loadMetalPrices();
+                    
+                    // Load alerts
+                    await this.loadAlerts();
+                    
+                    // Load analytics chart
+                    await this.loadAnalyticsChart();
+
+                } catch (error) {
+                    console.error('Failed to load dashboard data:', error);
+                    this.showError('Failed to load dashboard data');
+                }
+            }
+
+            async loadMerchantInfo() {
+                // Mock merchant data - in production, fetch from API
+                const merchantData = {
+                    id: this.merchantId,
+                    name: 'Tanishq Store - MG Road',
+                    category: 'Jewelry',
+                    kycStatus: 'verified',
+                    settlementPreference: 'instant'
+                };
+
+                document.getElementById('merchantName').textContent = merchantData.name;
+                document.getElementById('merchantCategory').textContent = `Category: ${merchantData.category}`;
+                document.getElementById('merchantId').textContent = `ID: ${merchantData.id}`;
+            }
+
+            async loadDashboardMetrics() {
+                // Mock metrics - in production, fetch from API
+                const metrics = {
+                    todayVolume: 1250000,
+                    volumeChange: 15.3,
+                    transactionCount: 23,
+                    avgTransaction: 54348,
+                    goldPercentage: 78,
+                    goldAmount: 975000,
+                    feesEarned: 2500
+                };
+
+                document.getElementById('todayVolume').textContent = 
+                    `₹${(metrics.todayVolume / 100000).toFixed(1)}L`;
+                document.getElementById('volumeChange').textContent = 
+                    `+${metrics.volumeChange}% from yesterday`;
+                document.getElementById('transactionCount').textContent = metrics.transactionCount;
+                document.getElementById('avgTransaction').textContent = 
+                    `Avg: ₹${metrics.avgTransaction.toLocaleString()}`;
+                document.getElementById('goldPercentage').textContent = `${metrics.goldPercentage}%`;
+                document.getElementById('goldAmount').textContent = 
+                    `₹${(metrics.goldAmount / 100000).toFixed(1)}L volume`;
+                document.getElementById('feesEarned').textContent = 
+                    `₹${metrics.feesEarned.toLocaleString()}`;
+            }
+
+            async loadRecentTransactions() {
+                const transactions = [
+                    {
+                        id: 'TXN_001',
+                        amount: 25000,
+                        metalType: 'gold',
+                        status: 'completed',
+                        timestamp: new Date(Date.now() - 1800000).toISOString()
+                    },
+                    {
+                        id: 'TXN_002',
+                        amount: 15000,
+                        metalType: 'silver',
+                        status: 'completed',
+                        timestamp: new Date(Date.now() - 3600000).toISOString()
+                    },
+                    {
+                        id: 'TXN_003',
+                        amount: 45000,
+                        metalType: 'gold',
+                        status: 'pending',
+                        timestamp: new Date(Date.now() - 7200000).toISOString()
+                    }
+                ];
+
+                const transactionsList = document.getElementById('transactionsList');
+                transactionsList.innerHTML = '';
+
+                transactions.forEach(transaction => {
+                    const transactionElement = this.createTransactionElement(transaction);
+                    transactionsList.appendChild(transactionElement);
+                });
+            }
+
+            createTransactionElement(transaction) {
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+                
+                const metalIcons = {
+                    gold: 'fas fa-coins text-yellow-500',
+                    silver: 'fas fa-circle text-gray-400',
+                    platinum: 'fas fa-gem text-blue-500',
+                    basket: 'fas fa-cubes text-purple-500'
+                };
+
+                const statusColors = {
+                    completed: 'bg-green-100 text-green-800',
+                    pending: 'bg-yellow-100 text-yellow-800',
+                    failed: 'bg-red-100 text-red-800'
+                };
+
+                div.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="${metalIcons[transaction.metalType]} mr-3"></i>
+                        <div>
+                            <p class="font-medium text-gray-800">${transaction.id}</p>
+                            <p class="text-sm text-gray-600">
+                                ₹${transaction.amount.toLocaleString()} via ${transaction.metalType}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-2 py-1 ${statusColors[transaction.status]} rounded-full text-xs font-medium">
+                            ${transaction.status}
+                        </span>
+                        <p class="text-xs text-gray-500 mt-1">
+                            ${this.formatTimeAgo(transaction.timestamp)}
+                        </p>
+                    </div>
+                `;
+
+                return div;
+            }
+
+            formatTimeAgo(timestamp) {
+                const now = new Date();
+                const time = new Date(timestamp);
+                const diffInMinutes = Math.floor((now - time) / 60000);
+                
+                if (diffInMinutes < 1) return 'Just now';
+                if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+                if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)}h ago`;
+                return `${Math.floor(diffInMinutes / 1440)}d ago`;
+            }
+
+            async loadSettlementStatus() {
+                // Mock settlement data
+                document.getElementById('completedSettlements').textContent = '18 today';
+                document.getElementById('pendingSettlements').textContent = '2 in queue';
+                document.getElementById('settlementProgress').textContent = '95%';
+                document.getElementById('settlementBar').style.width = '95%';
+            }
+
+            async loadMetalPrices() {
+                const metalPrices = [
+                    { metal: 'Gold', price: 6956.50, change: '+0.8%', color: 'text-green-600' },
+                    { metal: 'Silver', price: 82.75, change: '-0.3%', color: 'text-red-600' },
+                    { metal: 'Platinum', price: 2845.20, change: '+1.2%', color: 'text-green-600' },
+                    { metal: 'Basket', price: 2800.00, change: '+0.5%', color: 'text-green-600' }
+                ];
+
+                const pricesContainer = document.getElementById('metalPrices');
+                pricesContainer.innerHTML = '';
+
+                metalPrices.forEach(price => {
+                    const priceElement = document.createElement('div');
+                    priceElement.className = 'flex items-center justify-between';
+                    priceElement.innerHTML = `
+                        <div>
+                            <p class="font-medium text-gray-800">${price.metal}</p>
+                            <p class="text-sm text-gray-600">per gram</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium text-gray-800">₹${price.price}</p>
+                            <p class="text-sm ${price.color}">${price.change}</p>
+                        </div>
+                    `;
+                    pricesContainer.appendChild(priceElement);
+                });
+            }
+
+            async loadAlerts() {
+                const alerts = [
+                    {
+                        type: 'success',
+                        title: 'High Volume Day',
+                        message: 'Great performance! 25% above average',
+                        icon: 'fa-chart-line'
+                    },
+                    {
+                        type: 'info',
+                        title: 'Settlement Scheduled',
+                        message: 'Daily settlement at 6 PM',
+                        icon: 'fa-clock'
+                    }
+                ];
+
+                const alertsContainer = document.getElementById('alertsList');
+                alertsContainer.innerHTML = '';
+
+                if (alerts.length === 0) {
+                    alertsContainer.innerHTML = `
+                        <div class="text-center py-4 text-gray-500">
+                            <i class="fas fa-check-circle text-green-500 mb-2"></i>
+                            <p class="text-sm">All systems operational</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                alerts.forEach(alert => {
+                    const alertElement = document.createElement('div');
+                    alertElement.className = `p-3 rounded-lg ${
+                        alert.type === 'success' ? 'bg-green-50 border border-green-200' :
+                        alert.type === 'warning' ? 'bg-yellow-50 border border-yellow-200' :
+                        'bg-blue-50 border border-blue-200'
+                    }`;
+                    
+                    alertElement.innerHTML = `
+                        <div class="flex items-start">
+                            <i class="fas ${alert.icon} mr-3 mt-1 ${
+                                alert.type === 'success' ? 'text-green-500' :
+                                alert.type === 'warning' ? 'text-yellow-500' :
+                                'text-blue-500'
+                            }"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">${alert.title}</p>
+                                <p class="text-sm text-gray-600">${alert.message}</p>
+                            </div>
+                        </div>
+                    `;
+                    alertsContainer.appendChild(alertElement);
+                });
+            }
+
+            async loadAnalyticsChart() {
+                const ctx = document.getElementById('metalChart').getContext('2d');
+                
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Gold', 'Silver', 'Platinum', 'Basket'],
+                        datasets: [{
+                            data: [78, 15, 5, 2],
+                            backgroundColor: [
+                                '#FCD34D',
+                                '#D1D5DB',
+                                '#60A5FA',
+                                '#A78BFA'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            setupEventListeners() {
+                // Quick action buttons
+                document.querySelectorAll('button').forEach(button => {
+                    if (button.textContent.includes('Test Metal Payment')) {
+                        button.addEventListener('click', () => this.openPaymentModal());
+                    }
+                });
+
+                // Payment form
+                const paymentForm = document.getElementById('paymentForm');
+                paymentForm.addEventListener('submit', (e) => this.handlePaymentSubmission(e));
+            }
+
+            openPaymentModal() {
+                document.getElementById('paymentModal').classList.remove('hidden');
+            }
+
+            async handlePaymentSubmission(e) {
+                e.preventDefault();
+                
+                const amount = document.getElementById('paymentAmount').value;
+                const metal = document.getElementById('paymentMetal').value;
+                
+                if (!amount || amount <= 0) {
+                    alert('Please enter a valid amount');
+                    return;
+                }
+
+                try {
+                    // Mock payment creation
+                    console.log('Creating payment:', { amount, metal });
+                    alert('Payment created successfully! Check console for details.');
+                    
+                    this.closePaymentModal();
+                    
+                    // Refresh dashboard
+                    this.loadDashboardData();
+                    
+                } catch (error) {
+                    console.error('Payment creation failed:', error);
+                    alert('Payment creation failed. Please try again.');
+                }
+            }
+
+            closePaymentModal() {
+                document.getElementById('paymentModal').classList.add('hidden');
+                document.getElementById('paymentForm').reset();
+            }
+
+            startRealTimeUpdates() {
+                // Update metal prices every 30 seconds
+                setInterval(() => {
+                    this.loadMetalPrices();
+                }, 30000);
+
+                // Update dashboard metrics every 60 seconds
+                setInterval(() => {
+                    this.loadDashboardMetrics();
+                }, 60000);
+            }
+
+            showError(message) {
+                console.error(message);
+                // In production, show proper error notification
+                alert(message);
+            }
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.dashboard = new MerchantDashboard();
+        });
+
+        // Global functions for modal control
+        function closePaymentModal() {
+            window.dashboard.closePaymentModal();
+        }
+    </script>
+</body>
+</html>

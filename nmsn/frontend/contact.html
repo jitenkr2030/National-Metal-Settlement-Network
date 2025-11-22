@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NMSN | Get in Touch with Our Team</title>
+    <meta name="description" content="Contact NMSN for merchant onboarding, technical support, partnerships, or general inquiries. Our team is here to help you succeed with metal payments.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .form-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #FFD700;
+        }
+
+        .contact-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .contact-card-content {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+
+        .contact-details p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .support-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .support-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 25px;
+        }
+
+        .support-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .support-description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .support-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .support-features li {
+            padding: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .support-features i {
+            color: #4CAF50;
+            font-size: 0.9rem;
+        }
+
+        .faq-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-toggle {
+            color: #FFD700;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .office-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .office-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .office-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .office-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .office-address {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .office-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .office-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .office-contact-item i {
+            color: #FFD700;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">🇮🇳 NMSN</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="merchants.html">For Merchants</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>Ready to start accepting metal payments? Have questions about our platform? Our team is here to help you succeed.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Our Team</h2>
+            <p class="section-subtitle">Multiple ways to reach us. Choose what works best for you.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3 class="form-title">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Inquiry Type *</label>
+                                <select class="form-select" required>
+                                    <option value="">Select inquiry type</option>
+                                    <option value="merchant">Merchant Onboarding</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="press">Press & Media</option>
+                                    <option value="general">General Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea class="form-textarea" placeholder="Tell us about your business and how we can help you..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3 class="contact-card-title">Quick Response Guarantee</h3>
+                        <p class="contact-card-content">
+                            We respond to all inquiries within 24 hours. For urgent merchant onboarding requests, 
+                            we typically respond within 4 hours during business hours.
+                        </p>
+                    </div>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone Support</h4>
+                                <p>+91 11 4567 8900<br>Mon-Fri 9:00 AM - 8:00 PM IST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email Support</h4>
+                                <p>support@nmsn.co.in<br>Response within 4 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Live Chat</h4>
+                                <p>Available 24/7<br>Instant response</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>WhatsApp Business</h4>
+                                <p>+91 98765 43210<br>Quick text support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <h2 class="section-title">Specialized Support</h2>
+            <p class="section-subtitle">Expert teams dedicated to specific aspects of your NMSN journey.</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="support-title">Merchant Success</h3>
+                    <p class="support-description">Get help with onboarding, integrations, and growing your metal payment business.</p>
+                    <ul class="support-features">
+                        <li><i class="fas fa-check"></i> Merchant onboarding</li>
+                        <li><i class="fas fa-check"></i> API integration help</li>
+                        <li><i class="fas fa-check"></i> Business optimization</li>
+                        <li><i class="fas fa-check"></i> Performance analytics</li>
+                    </ul>
+                    <a href="mailto:merchants@nmsn.co.in" class="btn btn-primary">Contact Sales</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="support-title">Technical Support</h3>
+                    <p class="support-description">Developer-focused support for API integration, troubleshooting, and technical questions.</p>
+                    <ul class="support-features">
+                        <li><i class="fas fa-check"></i> API documentation</li>
+                        <li><i class="fas fa-check"></i> Code examples</li>
+                        <li><i class="fas fa-check"></i> Integration guides</li>
+                        <li><i class="fas fa-check"></i> Webhook setup</li>
+                    </ul>
+                    <a href="mailto:developers@nmsn.co.in" class="btn btn-primary">Developer Help</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="support-title">Partnership Team</h3>
+                    <p class="support-description">Explore strategic partnerships, white-label solutions, and enterprise integrations.</p>
+                    <ul class="support-features">
+                        <li><i class="fas fa-check"></i> Strategic partnerships</li>
+                        <li><i class="fas fa-check"></i> White-label solutions</li>
+                        <li><i class="fas fa-check"></i> Enterprise pricing</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                    </ul>
+                    <a href="mailto:partnerships@nmsn.co.in" class="btn btn-primary">Partner with Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions about NMSN.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly can we start accepting metal payments?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Most merchants can go live within 24-48 hours after completing KYC verification and basic integration. 
+                        We provide a sandbox environment for testing and dedicated support during onboarding.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the settlement times for metal payments?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        All metal payments settle to INR within 2 seconds. The settlement process automatically converts 
+                        metal tokens to BINR stablecoin and then to INR in the merchant's bank account.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What metals can customers pay with?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Customers can pay with Gold (BGT), Silver (BST), Platinum (BPT), and Metal Basket Tokens (MBT). 
+                        We support all major precious metals with real-time pricing from LBMA, MCX, and COMEX exchanges.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the fees for merchants?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Network fees range from 0.2% to 0.5% per transaction, depending on volume and plan. 
+                        There are no setup fees for basic integration, and we provide transparent pricing with no hidden charges.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is NMSN compliant with Indian regulations?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, NMSN is fully compliant with RBI, SEBI, and FIU guidelines. We handle all regulatory reporting, 
+                        AML/KYC verification, and suspicious activity monitoring automatically as part of our platform.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you provide mobile apps or SDKs?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We provide React Native mobile apps for iOS and Android, REST APIs, JavaScript SDKs, 
+                        and plugins for popular e-commerce platforms like Shopify and WooCommerce.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Section -->
+    <section class="office-section">
+        <div class="container">
+            <h2 class="section-title">Visit Our Offices</h2>
+            <p class="section-subtitle">Meet our team in person at any of our locations across India.</p>
+            
+            <div class="office-grid">
+                <div class="office-card">
+                    <h3 class="office-name">Mumbai (Head Office)</h3>
+                    <div class="office-address">
+                        <strong>NMSN Technologies Pvt Ltd</strong><br>
+                        Level 15, Tower A<br>
+                        Peninsula Business Park<br>
+                        Lower Parel, Mumbai - 400013<br>
+                        Maharashtra, India
+                    </div>
+                    <div class="office-contact">
+                        <div class="office-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 22 4567 8900</span>
+                        </div>
+                        <div class="office-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>mumbai@nmsn.co.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <h3 class="office-name">Delhi NCR</h3>
+                    <div class="office-address">
+                        <strong>NMSN Technologies - North Region</strong><br>
+                        Suite 405, Building 5<br>
+                        Cyber City, DLF Phase 2<br>
+                        Gurugram - 122002<br>
+                        Haryana, India
+                    </div>
+                    <div class="office-contact">
+                        <div class="office-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 124 4567 8900</span>
+                        </div>
+                        <div class="office-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>delhi@nmsn.co.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <h3 class="office-name">Bangalore</h3>
+                    <div class="office-address">
+                        <strong>NMSN Technologies - South Region</strong><br>
+                        3rd Floor, Innovation Center<br>
+                        Electronic City Phase 1<br>
+                        Bangalore - 560100<br>
+                        Karnataka, India
+                    </div>
+                    <div class="office-contact">
+                        <div class="office-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 80 4567 8900</span>
+                        </div>
+                        <div class="office-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>bangalore@nmsn.co.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMSN</h3>
+                    <p>National Metal Settlement Network - India's first nationwide precious metal payment system.</p>
+                    <p>Built with ❤️ in India for seamless metal payments.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <a href="tel:+911145678900">+91 11 4567 8900</a>
+                    <a href="mailto:support@nmsn.co.in">support@nmsn.co.in</a>
+                    <a href="#">Live Chat Support</a>
+                    <a href="#">Schedule Demo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">Merchant Dashboard</a>
+                    <a href="#">Developer Portal</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#">About NMSN</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#">Partner Program</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NMSN - National Metal Settlement Network. All rights reserved.</p>
+                <p>Connect with us: support@nmsn.co.in | +91 11 4567 8900</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const button = this.querySelector('button');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = 'linear-gradient(45deg, #FFD700, #FFA500)';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.contact-card, .support-card, .faq-item, .office-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

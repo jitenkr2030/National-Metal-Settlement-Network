@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - NMSN | Complete Metal Payment Infrastructure</title>
+    <meta name="description" content="Explore comprehensive features of NMSN - India's most advanced metal payment system with instant settlement, multi-metal support, and regulatory compliance.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .feature-detail {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-detail:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .feature-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .feature-benefits {
+            list-style: none;
+        }
+
+        .feature-benefits li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+        }
+
+        .feature-benefits i {
+            color: #4CAF50;
+            font-size: 0.9rem;
+        }
+
+        .architecture-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .architecture-diagram {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 20px;
+            padding: 60px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .architecture-layers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .layer {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #FFD700;
+        }
+
+        .layer-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .layer-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .integration-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .integration-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .integration-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .integration-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .integration-description {
+            color: #666;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .architecture-layers {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">🇮🇳 NMSN</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="merchants.html">For Merchants</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Complete Metal Payment Infrastructure</h1>
+            <p>Everything you need to accept, process, and settle precious metal payments at scale.</p>
+        </div>
+    </section>
+
+    <!-- Features Detail Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Core Features</h2>
+            <p class="section-subtitle">Built on proven infrastructure with enterprise-grade reliability and security.</p>
+            
+            <div class="features-grid">
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Settlement Engine</h3>
+                    <p class="feature-description">Our proprietary settlement engine processes metal-to-INR conversions in under 2 seconds using advanced smart contracts and real-time pricing feeds.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> Sub-2 second settlement times</li>
+                        <li><i class="fas fa-check"></i> Real-time price calculations</li>
+                        <li><i class="fas fa-check"></i> Automatic BINR minting/burning</li>
+                        <li><i class="fas fa-check"></i> Fault-tolerant processing</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Regulatory Compliance Suite</h3>
+                    <p class="feature-description">Comprehensive compliance engine that automatically handles RBI, SEBI, and FIU requirements with built-in AML/KYC verification and suspicious activity monitoring.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> RBI guidelines compliance</li>
+                        <li><i class="fas fa-check"></i> SEBI reporting automation</li>
+                        <li><i class="fas fa-check"></i> FIU transaction monitoring</li>
+                        <li><i class="fas fa-check"></i> Suspicious activity alerts</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-Metal Token Support</h3>
+                    <p class="feature-description">Accept payments in Gold (BGT), Silver (BST), Platinum (BPT), and Metal Basket Tokens (MBT) with automatic portfolio rebalancing and price hedging.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> BGT Gold token support</li>
+                        <li><i class="fas fa-check"></i> BST Silver token support</li>
+                        <li><i class="fas fa-check"></i> BPT Platinum token support</li>
+                        <li><i class="fas fa-check"></i> MBT basket rebalancing</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="feature-title">Vault Network Integration</h3>
+                    <p class="feature-description">Direct integration with certified vault providers including MMTC-PAMP, Augmont, SafeGold, and others for real-time asset verification and physical settlement.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> MMTC-PAMP integration</li>
+                        <li><i class="fas fa-check"></i> Augmont connectivity</li>
+                        <li><i class="fas fa-check"></i> SafeGold API integration</li>
+                        <li><i class="fas fa-check"></i> Physical delivery support</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile-First Experience</h3>
+                    <p class="feature-description">React Native mobile app with QR code payments, biometric authentication, wallet management, and seamless user onboarding experience.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> QR code payment scanning</li>
+                        <li><i class="fas fa-check"></i> Biometric authentication</li>
+                        <li><i class="fas fa-check"></i> Wallet management</li>
+                        <li><i class="fas fa-check"></i> Transaction history</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Analytics Dashboard</h3>
+                    <p class="feature-description">Comprehensive merchant dashboard with transaction analytics, settlement reports, GST-ready invoicing, and predictive insights.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> Real-time transaction monitoring</li>
+                        <li><i class="fas fa-check"></i> GST-ready invoice generation</li>
+                        <li><i class="fas fa-check"></i> Settlement reconciliation</li>
+                        <li><i class="fas fa-check"></i> Business intelligence reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">Built on proven enterprise infrastructure designed for scale and reliability.</p>
+            
+            <div class="architecture-diagram">
+                <h3 style="margin-bottom: 30px; font-size: 1.5rem; color: #1a1a1a;">NMSN Technology Stack</h3>
+                <div class="architecture-layers">
+                    <div class="layer">
+                        <div class="layer-title">🖥️ Frontend Layer</div>
+                        <div class="layer-description">React Native Mobile App, HTML5 Dashboard, REST API Gateway</div>
+                    </div>
+                    <div class="layer">
+                        <div class="layer-title">⚙️ Business Logic</div>
+                        <div class="layer-description">Settlement Engine, Pricing Service, Compliance Engine, BINR Bridge</div>
+                    </div>
+                    <div class="layer">
+                        <div class="layer-title">🔗 Integration Layer</div>
+                        <div class="layer-description">Vault Connectors, Exchange APIs, Banking Interfaces, KYC Services</div>
+                    </div>
+                    <div class="layer">
+                        <div class="layer-title">🏗️ Blockchain Layer</div>
+                        <div class="layer-description">INDI Chain, Hyperledger Fabric, Smart Contracts, Token Management</div>
+                    </div>
+                    <div class="layer">
+                        <div class="layer-title">🏦 Infrastructure</div>
+                        <div class="layer-description">Cloud Hosting, Database Cluster, Message Queue, Monitoring</div>
+                    </div>
+                    <div class="layer">
+                        <div class="layer-title">🔒 Security Layer</div>
+                        <div class="layer-description">Encryption, Authentication, Authorization, Audit Logging</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="container">
+            <h2 class="section-title">Seamless Integrations</h2>
+            <p class="section-subtitle">Connect with India's leading metal and financial infrastructure providers.</p>
+            
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="integration-name">BGT Gold Tokens</h3>
+                    <p class="integration-description">Direct integration with Bharat Gold Token infrastructure for gold-backed payments and settlement.</p>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="integration-name">BST Silver Tokens</h3>
+                    <p class="integration-description">Silver token integration for silver-backed transactions and portfolio diversification.</p>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="integration-name">BPT Platinum Tokens</h3>
+                    <p class="integration-description">Platinum token support for premium metal payments and industrial applications.</p>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="integration-name">BINR Stablecoin</h3>
+                    <p class="integration-description">INR-backed stablecoin for seamless fiat settlement and liquidity management.</p>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="integration-name">INDI Chain</h3>
+                    <p class="integration-description">Native blockchain with modified Proof-of-Stake consensus for transaction processing.</p>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="integration-name">Vault Providers</h3>
+                    <p class="integration-description">MMTC-PAMP, Augmont, SafeGold and other certified vaults for asset backing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Implement These Features?</h2>
+            <p>Start building with NMSN's comprehensive API suite and join India's metal payment revolution.</p>
+            <a href="#get-started" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                Start Integration
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMSN</h3>
+                    <p>National Metal Settlement Network - India's first nationwide precious metal payment system.</p>
+                    <p>Powered by BGT, BST, BPT, and BINR infrastructure.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="#">Metal Payments</a>
+                    <a href="#">Settlement Engine</a>
+                    <a href="#">Vault Integration</a>
+                    <a href="#">Analytics Dashboard</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Solutions</h3>
+                    <a href="#">Retail Payments</a>
+                    <a href="#">NBFC Integration</a>
+                    <a href="#">Jewelry Stores</a>
+                    <a href="#">E-commerce</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Integration Guide</a>
+                    <a href="#">Contact Support</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NMSN - National Metal Settlement Network. All rights reserved.</p>
+                <p>Built with ❤️ in India for the future of metal payments.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling and animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-detail, .integration-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

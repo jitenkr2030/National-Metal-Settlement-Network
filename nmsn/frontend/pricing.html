@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - NMSN | Transparent Metal Payment Pricing</title>
+    <meta name="description" content="Simple, transparent pricing for NMSN metal payment services. No hidden fees, competitive rates, and flexible plans for businesses of all sizes.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .pricing-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 5px;
+            margin-bottom: 40px;
+        }
+
+        .toggle-option {
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .toggle-option.active {
+            background: #FFD700;
+            color: #1a1a1a;
+        }
+
+        .pricing-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #FFD700;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .pricing-card.enterprise {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .pricing-card.enterprise .pricing-title,
+        .pricing-card.enterprise .pricing-price {
+            color: white;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .pricing-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333;
+        }
+
+        .pricing-card.enterprise .pricing-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pricing-features i {
+            color: #4CAF50;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-features .limited {
+            color: #999;
+        }
+
+        .pricing-features .limited i {
+            color: #999;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #e1e5e9;
+        }
+
+        .pricing-card.enterprise .btn-secondary {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: #FFD700;
+            color: #FFD700;
+        }
+
+        .compare-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .compare-table {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 200px 200px 200px;
+            gap: 20px;
+            min-width: 800px;
+        }
+
+        .compare-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 10px;
+        }
+
+        .compare-feature {
+            padding: 15px 20px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .compare-cell {
+            padding: 15px 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .compare-cell.yes {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .compare-cell.no {
+            color: #999;
+        }
+
+        .faq-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-toggle {
+            color: #FFD700;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .calculator-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .calculator-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .calc-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .calc-label {
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .calc-input {
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .calc-result {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .calc-result h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .calc-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .calc-savings {
+            color: #4CAF50;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .compare-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .calc-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">🇮🇳 NMSN</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="merchants.html">For Merchants</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Simple, Transparent Pricing</h1>
+            <p>No hidden fees, no surprises. Choose the plan that fits your business needs.</p>
+            <div class="pricing-toggle">
+                <div class="toggle-option active">Monthly</div>
+                <div class="toggle-option">Annual (Save 20%)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-subtitle">All plans include core metal payment features with scalable pricing based on your transaction volume.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Starter</h3>
+                    <p class="pricing-description">Perfect for small businesses getting started with metal payments</p>
+                    <div class="pricing-price">₹2,000</div>
+                    <div class="pricing-period">one-time setup + 0.5% per transaction</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic API integration</li>
+                        <li><i class="fas fa-check"></i> Single metal support (Gold)</li>
+                        <li><i class="fas fa-check"></i> Standard settlement (2-5 seconds)</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> Basic analytics dashboard</li>
+                        <li><i class="fas fa-check"></i> Up to 1,000 transactions/month</li>
+                        <li><i class="fas fa-check limited"><i class="fas fa-times"></i></i> Multi-metal support</li>
+                        <li><i class="fas fa-check limited"><i class="fas fa-times"></i></i> Priority settlement</li>
+                        <li><i class="fas fa-check limited"><i class="fas fa-times"></i></i> Phone support</li>
+                        <li><i class="fas fa-check limited"><i class="fas fa-times"></i></i> Custom branding</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3 class="pricing-title">Professional</h3>
+                    <p class="pricing-description">Ideal for growing businesses with higher transaction volumes</p>
+                    <div class="pricing-price">₹25,000</div>
+                    <div class="pricing-period">annual license + 0.3% per transaction</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Advanced API integration</li>
+                        <li><i class="fas fa-check"></i> Multi-metal support (Gold, Silver, Platinum)</li>
+                        <li><i class="fas fa-check"></i> Priority settlement (under 2 seconds)</li>
+                        <li><i class="fas fa-check"></i> Phone & email support</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
+                        <li><i class="fas fa-check"></i> Up to 10,000 transactions/month</li>
+                        <li><i class="fas fa-check"></i> Custom payment pages</li>
+                        <li><i class="fas fa-check"></i> Webhook notifications</li>
+                        <li><i class="fas fa-check"></i> GST-ready invoicing</li>
+                        <li><i class="fas fa-check"></i> Business insights & reports</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Most Popular</a>
+                </div>
+
+                <div class="pricing-card enterprise">
+                    <h3 class="pricing-title">Enterprise</h3>
+                    <p class="pricing-description">For large enterprises with custom requirements and dedicated support</p>
+                    <div class="pricing-price">₹1,00,000</div>
+                    <div class="pricing-period">annual license + 0.2% per transaction</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited API calls & integrations</li>
+                        <li><i class="fas fa-check"></i> All metals + Basket Tokens (MBT)</li>
+                        <li><i class="fas fa-check"></i> Instant settlement (under 1 second)</li>
+                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                        <li><i class="fas fa-check"></i> White-label solution</li>
+                        <li><i class="fas fa-check"></i> Unlimited transactions</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                        <li><i class="fas fa-check"></i> SLA guarantee (99.9% uptime)</li>
+                        <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                        <li><i class="fas fa-check"></i> Custom reporting & analytics</li>
+                        <li><i class="fas fa-check"></i> Regulatory compliance reports</li>
+                        <li><i class="fas fa-check"></i> Priority feature requests</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Section -->
+    <section class="compare-section">
+        <div class="container">
+            <h2 class="section-title">Feature Comparison</h2>
+            <p class="section-subtitle">Detailed comparison of features across all plans.</p>
+            
+            <div class="compare-table">
+                <div class="compare-grid">
+                    <div></div>
+                    <div class="compare-header">Starter</div>
+                    <div class="compare-header">Professional</div>
+                    <div class="compare-header">Enterprise</div>
+
+                    <div class="compare-feature">Transaction Volume</div>
+                    <div class="compare-cell">Up to 1,000/month</div>
+                    <div class="compare-cell">Up to 10,000/month</div>
+                    <div class="compare-cell">Unlimited</div>
+
+                    <div class="compare-feature">Settlement Time</div>
+                    <div class="compare-cell">2-5 seconds</div>
+                    <div class="compare-cell">Under 2 seconds</div>
+                    <div class="compare-cell">Under 1 second</div>
+
+                    <div class="compare-feature">Metal Support</div>
+                    <div class="compare-cell">Gold only</div>
+                    <div class="compare-cell">Gold, Silver, Platinum</div>
+                    <div class="compare-cell">All metals + MBT</div>
+
+                    <div class="compare-feature">API Rate Limit</div>
+                    <div class="compare-cell">100/min</div>
+                    <div class="compare-cell">1,000/min</div>
+                    <div class="compare-cell">Unlimited</div>
+
+                    <div class="compare-feature">Support Level</div>
+                    <div class="compare-cell">Email only</div>
+                    <div class="compare-cell">Phone + Email</div>
+                    <div class="compare-cell">Dedicated Manager</div>
+
+                    <div class="compare-feature">Analytics Dashboard</div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Basic</div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Advanced</div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Custom</div>
+
+                    <div class="compare-feature">Custom Branding</div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Basic</div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Full</div>
+
+                    <div class="compare-feature">White-label Solution</div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Included</div>
+
+                    <div class="compare-feature">SLA Guarantee</div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> 99.9%</div>
+
+                    <div class="compare-feature">Custom Integrations</div>
+                    <div class="compare-cell no"><i class="fas fa-times"></i></div>
+                    <div class="compare-cell limited"><i class="fas fa-check"></i> Limited</div>
+                    <div class="compare-cell yes"><i class="fas fa-check"></i> Full</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Calculate Your Savings</h2>
+            <p class="section-subtitle">See how much you can save with NMSN's competitive pricing.</p>
+            
+            <div class="calculator-card">
+                <div class="calc-row">
+                    <div class="calc-group">
+                        <label class="calc-label">Monthly Transaction Volume</label>
+                        <input type="number" class="calc-input" id="volume" placeholder="5000" value="5000">
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">Average Transaction Amount (₹)</label>
+                        <input type="number" class="calc-input" id="amount" placeholder="1000" value="1000">
+                    </div>
+                </div>
+                
+                <div class="calc-row">
+                    <div class="calc-group">
+                        <label class="calc-label">Current Payment Processing Fee (%)</label>
+                        <input type="number" class="calc-input" id="currentFee" placeholder="2.5" value="2.5" step="0.1">
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">NMSN Plan</label>
+                        <select class="calc-input" id="plan">
+                            <option value="0.5">Starter (0.5%)</option>
+                            <option value="0.3" selected>Professional (0.3%)</option>
+                            <option value="0.2">Enterprise (0.2%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-result">
+                    <h3>Monthly Savings with NMSN</h3>
+                    <div class="calc-value" id="savings">₹0</div>
+                    <div class="calc-savings" id="savingsPercent">0% savings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Pricing FAQ</h2>
+            <p class="section-subtitle">Common questions about our pricing structure.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are there any hidden fees?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        No hidden fees whatsoever. The price you see is what you pay. We charge a transparent network fee per transaction plus the license fee for your chosen plan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens if I exceed my transaction limit?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        If you exceed your monthly limit, you'll be charged the standard network fee of 0.5% for additional transactions. You can upgrade your plan anytime for better rates.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I change plans later?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing differences.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a setup fee for Enterprise plans?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Enterprise plans include white-glove onboarding at no additional cost. This includes dedicated integration support, custom feature development, and training.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We accept bank transfers, UPI, and major credit cards for license fees. For transaction settlements, you receive INR directly in your bank account.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer refunds?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer a 30-day money-back guarantee for Professional and Enterprise plans. If you're not satisfied, we'll refund your license fee in full.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Saving?</h2>
+            <p>Join thousands of merchants already benefiting from NMSN's competitive rates and instant settlement.</p>
+            <a href="contact.html" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                Start Your Free Trial
+            </a>
+            <div style="margin-top: 20px;">
+                <a href="merchants.html" style="color: #1e3c72; text-decoration: none; font-weight: 500;">
+                    <i class="fas fa-calculator"></i> Calculate your savings
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMSN</h3>
+                    <p>National Metal Settlement Network - India's first nationwide precious metal payment system.</p>
+                    <p>Transparent pricing for sustainable growth.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pricing</h3>
+                    <a href="#">Starter Plan</a>
+                    <a href="#">Professional Plan</a>
+                    <a href="#">Enterprise Plan</a>
+                    <a href="#">Custom Solutions</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Pricing Calculator</a>
+                    <a href="#">Cost Comparison</a>
+                    <a href="#">ROI Calculator</a>
+                    <a href="#">Case Studies</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="contact.html">Contact Sales</a>
+                    <a href="#">Help Center</a>
+                    <a href="#">Billing Support</a>
+                    <a href="#">Account Management</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NMSN - National Metal Settlement Network. All rights reserved.</p>
+                <p>Transparent pricing • No hidden fees • Cancel anytime</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pricing calculator functionality
+        function calculateSavings() {
+            const volume = parseInt(document.getElementById('volume').value) || 0;
+            const amount = parseInt(document.getElementById('amount').value) || 0;
+            const currentFee = parseFloat(document.getElementById('currentFee').value) || 0;
+            const planFee = parseFloat(document.getElementById('plan').value) || 0;
+
+            const totalTransactions = volume * amount;
+            const currentCost = (totalTransactions * currentFee) / 100;
+            const nmsnCost = (totalTransactions * planFee) / 100;
+            const savings = currentCost - nmsnCost;
+            const savingsPercent = currentCost > 0 ? (savings / currentCost) * 100 : 0;
+
+            document.getElementById('savings').textContent = '₹' + savings.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+            document.getElementById('savingsPercent').textContent = savingsPercent.toFixed(1) + '% savings';
+        }
+
+        // Add event listeners to calculator inputs
+        ['volume', 'amount', 'currentFee', 'plan'].forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateSavings);
+        });
+
+        // Initial calculation
+        calculateSavings();
+
+        // Pricing toggle functionality
+        document.querySelectorAll('.toggle-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pricing-card, .compare-table, .faq-item, .calculator-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
